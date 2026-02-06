@@ -1,5 +1,5 @@
 import express from "express";
-// import cors from "cors";
+import cors from "cors";
 import helmet from "helmet";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./config/swagger.js";
@@ -12,27 +12,27 @@ const app = express();
 /* =======================
    CORS CONFIG (FIXED)
 ======================= */
-// const allowedOrigins = [
-//   "http://localhost:5000",
-//   "http://localhost:3000",
-//   "https://e-commers-mini.onrender.com",
-// ];
+const allowedOrigins = [
+  "http://localhost:5000",
+  "http://localhost:3000",
+  "https://e-commers-mini.onrender.com",
+];
 
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       // Swagger, Postman, server-to-server
-//       if (!origin) return callback(null, true);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Swagger, Postman, server-to-server
+      if (!origin) return callback(null, true);
 
-//       if (allowedOrigins.includes(origin)) {
-//         return callback(null, true);
-//       }
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
 
-//       return callback(new Error("CORS blocked: " + origin));
-//     },
-//     credentials: true,
-//   })
-// );
+      return callback(new Error("CORS blocked: " + origin));
+    },
+    credentials: true,
+  })
+);
 
 /* =======================
    MIDDLEWARES
