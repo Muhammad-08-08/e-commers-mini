@@ -4,13 +4,13 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Mening CRUD API loyiham",
+      title: "e-commers CRUD API loyiha",
       version: "1.0.0",
       description: "Node.js Express va MongoDB orqali yaratilgan API hujjatlari",
     },
     servers: [
       {
-        url: "http://localhost:5000",
+        url: process.env.BASE_URL || "http://localhost:5000",
       },
     ],
     components: {
