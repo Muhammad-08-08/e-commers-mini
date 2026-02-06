@@ -16,6 +16,7 @@ const allowedOrigins = [
   "http://localhost:5000",
   "http://localhost:3000",
   "https://e-commers-mini-1.onrender.com",
+  "https://e-commerse.onrender.com",
 ];
 
 app.use(
