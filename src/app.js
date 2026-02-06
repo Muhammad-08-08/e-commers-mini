@@ -10,25 +10,25 @@ import userRoutes from "./routes/user.routes.js";
 const app = express();
 
 /* =======================
-   CORS CONFIG
+   CORS CONFIG (FIXED)
 ======================= */
 const allowedOrigins = [
-  "https://e-commers-mini-1.onrender.com/api/docs",
   "http://localhost:5000",
-  process.env.BASE_URL, // https://e-commers.onrender.com
+  "http://localhost:3000",
+  "https://e-commers-mini-1.onrender.com",
 ];
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Swagger / Postman / server-to-server so‘rovlar uchun
+    origin: (origin, callback) => {
+      // Swagger, Postman, server-to-server
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("CORS blocked"));
+        return callback(null, true);
       }
+
+      return callback(new Error("CORS blocked: " + origin));
     },
     credentials: true,
   })
