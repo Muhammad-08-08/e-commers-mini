@@ -6,7 +6,8 @@ const options = {
     info: {
       title: "e-commers CRUD API loyiha",
       version: "1.0.0",
-      description: "Node.js Express va MongoDB orqali yaratilgan API hujjatlari",
+      description:
+        "Node.js Express va MongoDB orqali yaratilgan API hujjatlari",
     },
     servers: [
       {
@@ -22,8 +23,8 @@ const options = {
         },
       },
     },
-    },
-    apis: ["./src/routes/*.js", "./src/controllers/*.js"],
+  },
+  apis: ["./src/routes/*.js", "./src/controllers/*.js"],
 };
 
 const swaggerSpec = swaggerJsdoc(options);

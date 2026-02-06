@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import app from "./app.js";
 import connectDB from "./config/db.js";
 
@@ -8,6 +9,6 @@ connectDB();
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port: http://localhost:${PORT}`);
-  console.log(`Swagger UI: http://localhost:${PORT}/api/docs`);
+  console.log(`Server running on port: ${PORT}`);
+  console.log(`Swagger UI: ${process.env.BASE_URL || `http://localhost:${PORT}`}/api/docs`);
 });

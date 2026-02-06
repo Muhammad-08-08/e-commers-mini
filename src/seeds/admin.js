@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
@@ -12,10 +13,10 @@ const createAdmin = async () => {
     const exists = await User.findOne({ role: "admin" });
     if (exists) {
       console.log("Admin allaqachon mavjud");
-      process.exit();
+      process.exit(0);
     }
 
-    const hashed = await bcrypt.hash("admin123", 10); // maxfiy parol
+    const hashed = await bcrypt.hash("admin123", 10);
     const admin = await User.create({
       name: "Admin",
       email: "admin@example.com",
@@ -24,7 +25,7 @@ const createAdmin = async () => {
     });
 
     console.log("First admin yaratildi:", admin.email);
-    process.exit();
+    process.exit(0);
   } catch (err) {
     console.error(err);
     process.exit(1);
