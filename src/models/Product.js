@@ -6,9 +6,17 @@ const productSchema = new mongoose.Schema(
     description: String,
     image: String,
     sizes: [Number],
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    catalog: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Catalog",
+      required: true,
+    },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model("Product", productSchema);

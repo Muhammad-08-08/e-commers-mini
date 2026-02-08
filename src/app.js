@@ -6,6 +6,7 @@ import swaggerSpec from "./config/swagger.js";
 import authRoutes from "./routes/auth.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import catalogRoutes from "./routes/catalog.routes.js";
 
 const app = express();
 
@@ -15,7 +16,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5000",
   "http://localhost:3000",
-  "https://e-commers-mini.onrender.com"
+  "https://e-commers-mini.onrender.com",
 ];
 
 app.use(
@@ -31,7 +32,7 @@ app.use(
       return callback(new Error("CORS blocked: " + origin));
     },
     credentials: true,
-  })
+  }),
 );
 
 /* =======================
@@ -51,5 +52,6 @@ app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/catalogs", catalogRoutes);
 
 export default app;
